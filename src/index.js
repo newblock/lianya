@@ -6,11 +6,9 @@ import { userReducer } from './redux/user.redux'
 
 import App from './App';
 
-const store = createStore(userReducer)
+//const store = createStore(userReducer)
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById('root')
 )

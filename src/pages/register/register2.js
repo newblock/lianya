@@ -1,11 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { List, InputItem, Radio, WingBlank, WhiteSpace, Button } from 'antd-mobile'
+
 import Logo from '../../com/logo/logo'
+import { registerSuccess, errorMsg } from '../../redux/user.redux'
 
-//data post action
-import axios from 'axios'
-
-
+@connect(
+  state=>({userInfo:state}),
+  {registerSuccess, errorMsg}
+)
 class Register extends React.Component
 {
   constructor(props){
@@ -14,38 +17,18 @@ class Register extends React.Component
       user:'',
       pwd:'',
       repeatpwd:'',
-      type:'niu'//OR boss
-    }
+      type:'boss'
+    }//OR BOSS
+    this.handleRegister = this.handleRegister.bind(this)
   }
 
   handleRegister()
   {
+    console.log(this.props.userInfo)
     const user = this.state.user;
     const pwd = this.state.pwd;
     const type = this.state.type;
-    const repeatpwd = this.state.repeatpwd;
-
-    console.log({user, pwd, type})
-
-    if(!user||!pwd||!type){
-      return alert('用户密码必须输入')
-    }
-
-    if(pwd != repeatpwd){
-      return alert('密码和确认密码不同')
-    }
-
-    axios.post('user/register',{user,pwd,type}).
-      then(res=>{
-        if(res.status==200&&res.data.code==0)
-        {
-          console.log("写入数据成功"+res.data.data)
-        }
-        else
-        {
-          alert("写入数据失败")
-        }
-      })
+    this.props.registerSuccess({user,pwd,type})
   }
 
   handleChange(key,val)
@@ -77,8 +60,8 @@ class Register extends React.Component
               >确认密码</InputItem>
             <WhiteSpace></WhiteSpace>
             <RadioItem
-              checked={this.state.type=='niu'}
-              onChange={()=>this.handleChange('type','niu')}
+              checked={this.state.type=='genius'}
+              onChange={()=>this.handleChange('type','genius')}
               >牛人</RadioItem>
             <RadioItem
               checked={this.state.type=='boss'}
@@ -86,12 +69,10 @@ class Register extends React.Component
               >BOSS</RadioItem>
             <Button
               type='primary'
-              onClick={()=>this.handleRegister()}>注册</Button>
-
+              onClick={this.handleRegister}>注册</Button>
             <WhiteSpace></WhiteSpace>
-            <Button>成功结果{this.state.user}</Button>
-            <Button>失败结果{this.state.type}</Button>
-
+            <Button>成功结果{this.props.userInfo.user}</Button>
+            <Button>失败结果{this.props.userInfo.pwd}</Button>
           </List>
         </WingBlank>
       </div>
