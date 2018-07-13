@@ -2,10 +2,11 @@
 import React from 'react'
 import { NavBar, TabBar } from 'antd-mobile'
 import { Switch, Route } from 'react-router-dom'
+import Boss from '../boss/boss'
 
-function Boss(){
-  return <h2>Boss首页</h2>
-}
+// function Boss(){
+//   return <h2>Boss首页</h2>
+// }
 
 function Niuren(){
   return <h2>牛人组件</h2>
@@ -66,7 +67,7 @@ class MainPage extends React.Component{
           {navList.find(v=>v.path==pathname).title}
         </NavBar>
 
-        <div style={{marginTop:'45px'}}>
+        <div style={{marginTop:'45px',zIndex:'-1',position:'relative'}}>
           <Switch>
             {navList.map(v=>(
               <Route key={v.path} path={v.path} component = {v.component}/>

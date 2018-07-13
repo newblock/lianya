@@ -77,8 +77,8 @@ class Register extends React.Component
               >确认密码</InputItem>
             <WhiteSpace></WhiteSpace>
             <RadioItem
-              checked={this.state.type=='niu'}
-              onChange={()=>this.handleChange('type','niu')}
+              checked={this.state.type=='niuren'}
+              onChange={()=>this.handleChange('type','niuren')}
               >牛人</RadioItem>
             <RadioItem
               checked={this.state.type=='boss'}
