@@ -14,7 +14,7 @@ class Register extends React.Component
       user:'',
       pwd:'',
       repeatpwd:'',
-      type:'niu'//OR boss
+      type:'niuren'//OR boss
     }
   }
 
@@ -66,31 +66,27 @@ class Register extends React.Component
           <List>
             <InputItem
               onChange={v=>this.handleChange('user',v)}
-              >用户</InputItem>
-            <WhiteSpace></WhiteSpace>
+              >账户名</InputItem>
             <InputItem
               onChange={v=>this.handleChange('pwd',v)}
               >密码</InputItem>
-            <WhiteSpace></WhiteSpace>
             <InputItem
               onChange={v=>this.handleChange('repeatpwd',v)}
               >确认密码</InputItem>
-            <WhiteSpace></WhiteSpace>
             <RadioItem
               checked={this.state.type=='niuren'}
               onChange={()=>this.handleChange('type','niuren')}
-              >牛人</RadioItem>
+              >我是牛人(找公司)</RadioItem>
             <RadioItem
               checked={this.state.type=='boss'}
               onChange={()=>this.handleChange('type','boss')}
-              >BOSS</RadioItem>
+              >我是BOSS(挖人才)</RadioItem>
             <Button
               type='primary'
               onClick={()=>this.handleRegister()}>注册</Button>
-
-            <WhiteSpace></WhiteSpace>
+            {/* <WhiteSpace></WhiteSpace>
             <Button>成功结果{this.state.user}</Button>
-            <Button>失败结果{this.state.type}</Button>
+            <Button>失败结果{this.state.type}</Button> */}
 
           </List>
         </WingBlank>

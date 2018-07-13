@@ -37,8 +37,17 @@ class Login extends React.Component
       then(res=>{
         if(res.status==200&&res.data.code==0)
         {
+          console.log(res.data.data)
           alert("登陆成功"+res.data.data)
-          this.props.history.push("/mainpage");
+          if(res.data.data.type == "boss")
+          {
+            this.props.history.push("/boss");
+          }
+          else if(res.data.data.type == "niuren")
+          {
+            this.props.history.push("/niuren");
+          }
+
         }
         else
         {
@@ -50,6 +59,7 @@ class Login extends React.Component
   register()
   {
     console.log('register was press')
+    this.props.history.push("/register");
   }
 
   handleChange(key,val)
@@ -67,7 +77,8 @@ class Login extends React.Component
           <List>
             <InputItem
               onChange={v=>this.handleChange('user',v)}
-              >用户</InputItem>
+              >账号</InputItem>
+            <WhiteSpace></WhiteSpace>
             <InputItem
               onChange={v=>this.handleChange('pwd',v)}
               >密码</InputItem>

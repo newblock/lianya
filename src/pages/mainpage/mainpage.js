@@ -4,21 +4,18 @@ import { NavBar, TabBar } from 'antd-mobile'
 import { Switch, Route } from 'react-router-dom'
 import Boss from '../boss/boss'
 
-// function Boss(){
-//   return <h2>Boss首页</h2>
-// }
-
 function Niuren(){
   return <h2>牛人组件</h2>
-}
-
-function Msg(){
-  return <h2>消息组件</h2>
 }
 
 function Me(){
   return <h2>我的组件</h2>
 }
+
+// function Msg(){
+//   return <h2>消息组件</h2>
+// }
+
 
 class MainPage extends React.Component{
 
