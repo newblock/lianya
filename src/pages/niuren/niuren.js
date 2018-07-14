@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Card, WhiteSpace, WingBlank } from 'antd-mobile'
 
-class Boss extends React.Component{
+class Niuren extends React.Component{
 
   constructor(props){
     super(props);
@@ -12,7 +12,7 @@ class Boss extends React.Component{
   }
 
   componentDidMount(){
-    axios.get('/user/list?type=niuren').then(
+    axios.get('/user/list?type=boss').then(
       res=>{
         if(res.data.code == 0){
           this.setState({data:res.data.data})
@@ -62,4 +62,4 @@ class Boss extends React.Component{
   }
 }
 
-export default Boss
+export default Niuren

@@ -3,10 +3,8 @@ import React from 'react'
 import { NavBar, TabBar } from 'antd-mobile'
 import { Switch, Route } from 'react-router-dom'
 import Boss from '../boss/boss'
+import Niuren from '../niuren/niuren'
 
-function Niuren(){
-  return <h2>牛人组件</h2>
-}
 
 function Me(){
   return <h2>我的组件</h2>
@@ -25,19 +23,19 @@ class MainPage extends React.Component{
     const {pathname} = this.props.location;
     const navList = [
       {
-        path:'/boss',
+        path:'/niuren',
         text:'牛人',
         icon:'niuren',
-        title:'牛人列表',
-        component:Boss,
+        title:'职位列表',
+        component:Niuren,
         hide:false
       },
       {
-        path:'/niuren',
+        path:'/boss',
         text:'BOSS',
         icon:'boss',
-        title:'BOSS列表',
-        component:Niuren,
+        title:'牛人列表',
+        component:Boss,
         hide:false
       },
       // {

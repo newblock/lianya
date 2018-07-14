@@ -40,6 +40,14 @@ class Register extends React.Component
         if(res.status==200&&res.data.code==0)
         {
           console.log("写入数据成功"+res.data.data)
+          if(type == "boss")
+          {
+            this.props.history.push("/bossinfo");
+          }
+          else if(type == "niuren")
+          {
+            this.props.history.push("/niureninfo");
+          }
         }
         else
         {
