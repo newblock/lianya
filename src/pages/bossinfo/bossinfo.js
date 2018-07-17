@@ -2,7 +2,7 @@
 import React from 'react'
 import { NavBar, InputItem, TextareaItem, Button, WhiteSpace } from 'antd-mobile'
 import BossLogo from '../../com/bosslogo/bosslogo'
-import axios from 'axios'
+import axinstance from '../../com/net/axinstance'
 
 class BossInfo extends React.Component{
   constructor(props){
@@ -40,7 +40,9 @@ class BossInfo extends React.Component{
       return alert('请输入必要的招聘信息!')
     }
 
-    axios.post('user/update',{title,company,money,desc,contact}).
+    const userid = localStorage.getItem("userID");
+
+    axinstance.post('user/update',{userid,title,company,money,desc,contact}).
             then(res=>{
             if(res.status==200&&res.data.code==0)
             {

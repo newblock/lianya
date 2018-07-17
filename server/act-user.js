@@ -18,9 +18,15 @@ Router.get('/list',function(req,res){
 })
 
 Router.post('/update',function(req,res){
-  const userid = req.cookies.userid
+  // const userid = req.cookies.userid
+  // if(!userid){
+  //   return res.json({code:1})
+  // }
+  // const body = req.body
+
+  const userid = req.body.userid
   if(!userid){
-    return json.dumps({code:1})
+    return res.json({code:1})
   }
   const body = req.body
 
@@ -90,8 +96,6 @@ function md5Pwd(pwd){
   const salt = 'imooc_is_good_435323x8!#$@IU~~'
   return utils.md5(utils.md5(salt+pwd))
 }
-
-
 
 
 module.exports = Router

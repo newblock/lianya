@@ -2,7 +2,7 @@
 import React from 'react'
 import { NavBar, InputItem, TextareaItem, Button, WhiteSpace } from 'antd-mobile'
 import NiurenLogo from '../../com/niurenlogo/niurenlogo'
-import axios from 'axios'
+import axinstance from '../../com/net/axinstance'
 
 class NiurenInfo extends React.Component{
   constructor(props){
@@ -40,7 +40,9 @@ class NiurenInfo extends React.Component{
       return alert('请输入必要的求职信息!')
     }
 
-    axios.post('user/update',{title,github,money,desc,contact}).
+    const userid = localStorage.getItem("userID");
+
+    axinstance.post('user/update',{userid,title,github,money,desc,contact}).
             then(res=>{
             if(res.status==200&&res.data.code==0)
             {

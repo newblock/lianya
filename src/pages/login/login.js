@@ -4,7 +4,7 @@ import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile'
 import Logo from '../../com/logo/logo'
 
 //data post action
-import axios from 'axios'
+import axinstance from '../../com/net/axinstance'
 
 class Login extends React.Component
 {
@@ -33,7 +33,7 @@ class Login extends React.Component
       return alert('用户密码必须输入')
     }
 
-    axios.post('user/login',{user,pwd}).
+    axinstance.post('user/login',{user,pwd}).
       then(res=>{
         if(res.status==200&&res.data.code==0)
         {

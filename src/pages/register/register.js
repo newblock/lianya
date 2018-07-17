@@ -3,7 +3,7 @@ import { List, InputItem, Radio, WingBlank, WhiteSpace, Button } from 'antd-mobi
 import Logo from '../../com/logo/logo'
 
 //data post action
-import axios from 'axios'
+import axinstance from '../../com/net/axinstance'
 
 
 class Register extends React.Component
@@ -35,11 +35,17 @@ class Register extends React.Component
       return alert('密码和确认密码不同')
     }
 
-    axios.post('user/register',{user,pwd,type}).
+    console.log("time" + new Date())
+
+    axinstance.post('user/register',{user,pwd,type}).
       then(res=>{
         if(res.status==200&&res.data.code==0)
         {
           console.log("写入数据成功"+res.data.data)
+
+          console.log("userID" + res.data.data._id)
+          localStorage.setItem("userID",res.data.data._id);
+
           if(type == "boss")
           {
             this.props.history.push("/bossinfo");

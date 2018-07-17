@@ -1,6 +1,6 @@
 import React from 'react'
-import axios from 'axios'
 import { Card, WhiteSpace, WingBlank } from 'antd-mobile'
+import axinstance from '../../com/net/axinstance'
 
 class Niuren extends React.Component{
 
@@ -12,7 +12,8 @@ class Niuren extends React.Component{
   }
 
   componentDidMount(){
-    axios.get('/user/list?type=boss').then(
+
+    axinstance.get('/user/list?type=boss').then(
       res=>{
         if(res.data.code == 0){
           this.setState({data:res.data.data})
