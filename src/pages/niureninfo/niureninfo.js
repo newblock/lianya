@@ -64,7 +64,7 @@ class NiurenInfo extends React.Component{
   render(){
     return(
       <div>
-        <NavBar mode="dark">BOSS完善信息</NavBar>
+        <NavBar mode="dark">牛人完善信息</NavBar>
         <NiurenLogo />
         <InputItem
           onChange={(v)=>this.onChange('title',v)}>

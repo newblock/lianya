@@ -39,6 +39,13 @@ class Login extends React.Component
         {
           console.log(res.data.data)
           alert("登陆成功"+res.data.data)
+
+          localStorage.setItem("userID",res.data.data._id)
+          localStorage.setItem("type",res.data.data.type)
+          localStorage.setItem("user",res.data.data.user)
+          localStorage.setItem("title",res.data.data.title)
+          localStorage.setItem("desc",res.data.data.desc)
+
           if(res.data.data.type == "boss")
           {
             this.props.history.push("/boss");

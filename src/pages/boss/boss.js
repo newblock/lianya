@@ -40,7 +40,9 @@ class Boss extends React.Component{
                 title={v.user}
                 thumb={require(`../mainpage/img/${v.type}-act.png`)}
                 thumbStyle={{width:'30px'}}
-                extra={<span>{v.type}</span>}>
+                // extra={<span>{v.type}</span>}
+                extra='eth'
+                >
               </Header>
               <Card.Body>
                 <div>
@@ -50,7 +52,7 @@ class Boss extends React.Component{
                   <h3>经验：{v.desc}</h3>
                 </div>
               </Card.Body>
-              <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
+              {/* <Card.Footer content="footer content" extra={<div>extra footer content</div>} /> */}
             </Card>
             <WhiteSpace size="lg" />
           </div>):null

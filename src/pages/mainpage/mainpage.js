@@ -1,14 +1,11 @@
 
 import React from 'react'
-import { NavBar, TabBar } from 'antd-mobile'
+import { NavBar, TabBar, Button} from 'antd-mobile'
 import { Switch, Route } from 'react-router-dom'
 import Boss from '../boss/boss'
 import Niuren from '../niuren/niuren'
+import Me from '../me/me'
 
-
-function Me(){
-  return <h2>我的组件</h2>
-}
 
 // function Msg(){
 //   return <h2>消息组件</h2>
@@ -17,6 +14,11 @@ function Me(){
 
 class MainPage extends React.Component{
 
+
+  click()
+  {
+    alert("测试")
+  }
   render()
   {
     console.log(this.props.location)
@@ -55,19 +57,26 @@ class MainPage extends React.Component{
         hide:false
       }
     ]
+
+    // return(
+    //   <Button onClick={()=>this.click()}>测试</Button>
+    // )
+
+
     return(
       // <div style={{ position: 'fixed', height: '80%', width: '100%', top: 0 }}>
       <div>
+
         <NavBar className='fixed-header' mode='dard'>
           {navList.find(v=>v.path==pathname).title}
         </NavBar>
 
-        <div style={{marginTop:'45px',zIndex:'-1',position:'relative'}}>
-          <Switch>
-            {navList.map(v=>(
-              <Route key={v.path} path={v.path} component = {v.component}/>
-            ))}
-          </Switch>
+        <div style={{marginTop:'45px'}}>
+        <Switch>
+          {navList.map(v=>(
+            <Route key={v.path} path={v.path} component = {v.component}/>
+          ))}
+        </Switch>
         </div>
 
         <TabBar>

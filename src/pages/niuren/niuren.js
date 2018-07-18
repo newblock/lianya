@@ -44,13 +44,13 @@ class Niuren extends React.Component{
               </Header>
               <Card.Body>
                 <div>
-                  <h3>职位：{v.title}</h3>
-                  <h3>薪资：{v.money} ETH</h3>
+                  <h3>招聘职位：{v.title}</h3>
+                  <h3>年薪：{v.money} ETH</h3>
                   {/* <h3>月薪: {evr*v.money*0.9}到{evr*v.money*1.1}RMB</h3> */}
-                  <h3>经验：{v.desc}</h3>
+                  <h3>经验要求：{v.desc}</h3>
                 </div>
               </Card.Body>
-              <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
+              {/* <Card.Footer content="footer content" extra={<div>extra footer content</div>} /> */}
             </Card>
             <WhiteSpace size="lg" />
           </div>):null

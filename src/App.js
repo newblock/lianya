@@ -6,6 +6,7 @@ import Register from './pages/register/register'
 import MainPage from './pages/mainpage/mainpage'
 import BossInfo from './pages/bossinfo/bossinfo'
 import NiurenInfo from './pages/niureninfo/niureninfo'
+import Me from './pages/me/me'
 
 class App extends Component {
   render() {
