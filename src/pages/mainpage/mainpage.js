@@ -14,11 +14,6 @@ import Me from '../me/me'
 
 class MainPage extends React.Component{
 
-
-  click()
-  {
-    alert("测试")
-  }
   render()
   {
     console.log(this.props.location)

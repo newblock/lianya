@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile'
+import { List, InputItem, WingBlank, WhiteSpace, Button, Toast} from 'antd-mobile'
 import Logo from '../../com/logo/logo'
 
 //data post action
@@ -30,7 +30,7 @@ class Login extends React.Component
 
     if(!user||!pwd)
     {
-      return alert('用户密码必须输入')
+      return Toast.fail('用户密码必须输入', 1);
     }
 
     axinstance.post('user/login',{user,pwd}).
@@ -38,7 +38,7 @@ class Login extends React.Component
         if(res.status==200&&res.data.code==0)
         {
           console.log(res.data.data)
-          alert("登陆成功"+res.data.data)
+          //Toast.success('登陆成功!', 1);
 
           localStorage.setItem("userID",res.data.data._id)
           localStorage.setItem("type",res.data.data.type)
@@ -58,7 +58,7 @@ class Login extends React.Component
         }
         else
         {
-          alert("登陆失败!")
+          Toast.fail('登陆失败,请确认用户名密码正确', 1);
         }
       })
   }

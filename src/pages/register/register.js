@@ -1,10 +1,9 @@
 import React from 'react'
-import { List, InputItem, Radio, WingBlank, WhiteSpace, Button } from 'antd-mobile'
+import { List, InputItem, Radio, WingBlank, WhiteSpace, Button, Toast } from 'antd-mobile'
 import Logo from '../../com/logo/logo'
 
 //data post action
 import axinstance from '../../com/net/axinstance'
-
 
 class Register extends React.Component
 {
@@ -28,11 +27,11 @@ class Register extends React.Component
     console.log({user, pwd, type})
 
     if(!user||!pwd||!type){
-      return alert('用户密码必须输入')
+      return Toast.fail('用户密码必须输入', 1);
     }
 
     if(pwd != repeatpwd){
-      return alert('密码和确认密码不同')
+      return Toast.fail('密码和确认密码不同', 1);
     }
 
     console.log("time" + new Date())
@@ -42,9 +41,13 @@ class Register extends React.Component
         if(res.status==200&&res.data.code==0)
         {
           console.log("写入数据成功"+res.data.data)
-
           console.log("userID" + res.data.data._id)
-          localStorage.setItem("userID",res.data.data._id);
+
+          localStorage.setItem("userID",res.data.data._id)
+          localStorage.setItem("type",res.data.data.type)
+          localStorage.setItem("user",res.data.data.user)
+          localStorage.setItem("title",res.data.data.title)
+          localStorage.setItem("desc",res.data.data.desc)
 
           if(type == "boss")
           {
@@ -57,7 +60,7 @@ class Register extends React.Component
         }
         else
         {
-          alert("写入数据失败")
+          Toast.fail('注册失败,用户名已被占用,请更换注册用户名', 1);
         }
       })
   }

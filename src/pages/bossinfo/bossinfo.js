@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { NavBar, InputItem, TextareaItem, Button, WhiteSpace } from 'antd-mobile'
+import { NavBar, InputItem, TextareaItem, Button, WhiteSpace, Toast } from 'antd-mobile'
 import BossLogo from '../../com/bosslogo/bosslogo'
 import axinstance from '../../com/net/axinstance'
 
@@ -37,7 +37,7 @@ class BossInfo extends React.Component{
 
     if(!title||!money||!desc||!contact)
     {
-      return alert('请输入必要的招聘信息!')
+      return Toast.fail('请输入有效的招聘信息!', 1);
     }
 
     const userid = localStorage.getItem("userID");
@@ -47,11 +47,15 @@ class BossInfo extends React.Component{
             if(res.status==200&&res.data.code==0)
             {
               console.log("保存数据成功"+res.data.data)
+              localStorage.setItem("type",res.data.data.type)
+              localStorage.setItem("user",res.data.data.user)
+              localStorage.setItem("title",res.data.data.title)
+              localStorage.setItem("desc",res.data.data.desc)
               this.props.history.push("/boss");
             }
             else
             {
-              alert("保存失败")
+              Toast.fail('登陆失败,请检测网络是否正常!', 1);
             }
           })
   }
