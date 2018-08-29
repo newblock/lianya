@@ -52,10 +52,12 @@ class Register extends React.Component
               >用户</InputItem>
             <WhiteSpace></WhiteSpace>
             <InputItem
+              type='password'
               onChange={v=>this.handleChange('pwd',v)}
               >密码</InputItem>
             <WhiteSpace></WhiteSpace>
             <InputItem
+              type='password'
               onChange={v=>this.handleChange('repeatpwd',v)}
               >确认密码</InputItem>
             <WhiteSpace></WhiteSpace>
